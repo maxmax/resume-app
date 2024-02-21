@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Container from "../Container";
+import { Container, Footer } from "@/components";
 
 interface AppLayoutProps {
   children: React.ReactNode
@@ -7,11 +7,10 @@ interface AppLayoutProps {
 
 const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   return (
-    <>
-			<Container maxWidth="xl">
-				{children}
-			</Container>
-    </>
+    <Container maxWidth="md">
+      {children}
+      <Footer />
+    </Container>
   );
 }
 

@@ -1,23 +1,48 @@
 import React from 'react';
+import dayjs from 'dayjs';
 import { User } from '@/services';
+import { 
+	Box, 
+	Typography, 
+	Divider, 
+	Avatar 
+} from '@/components';
 
 interface UserInfoProps {
 	user: User;
 }
 
 const UserInfo: React.FC<UserInfoProps> = ({ user }) => {
-	const memberSince = user.created_at ? new Date(user.created_at).toLocaleDateString() : 'N/A';
-	const lastUpdated = user.updated_at ? new Date(user.updated_at).toLocaleDateString() : 'N/A';
+
+	const memberSince = dayjs(user.created_at).format('DD-MMM-YYYY');
+	const lastUpdated = dayjs(user.updated_at).format('DD-MMM-YYYY');
 	
 	return (
-		<div>
-			<h2>User Info:</h2>
-			<div>Login: {user.login}</div>
-			<div>Name: {user.name}</div>
-			<div>Public Repositories: {user.public_repos}</div>
-			<div>Member Since: {memberSince}</div>
-      <div>Last Updated: {lastUpdated}</div>
-		</div>
+		<Box sx={{ textAlign: 'center' }}>
+			<Typography variant="h1">{user.name}</Typography>
+      <Avatar
+        alt="Remy Sharp"
+        src={user.avatar_url}
+        sx={{ width: 140, height: 140, margin: 'auto', mt: 1, mb: 2 }}
+      />
+      <Typography variant="overline" display="block">
+				<a href={user.html_url} target='_blank'>{user.html_url}</a>
+      </Typography>
+			<Typography variant="caption" display="block" gutterBottom>
+				Last Updated: {lastUpdated}
+      </Typography>
+			<Divider />
+			<Typography variant="body1" sx={{ my: 2 }}>
+				A GitHub user since {memberSince}, {user.name} is a developer with {user.public_repos} public 
+				repositories and {user.followers} subscribers.
+			</Typography>
+			{user.blog &&
+				<Typography variant="overline" display="block">
+					Website: <a href={user.blog} target='_blank'>{user.blog}</a>
+				</Typography>
+			}
+			<Divider />
+		</Box>
 	);
 };
 
