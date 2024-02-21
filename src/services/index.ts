@@ -1,11 +1,18 @@
-import { githubApi, useGetUserQuery } from '../services/github';
-import { User, Repository, Language } from './types';
+import { 
+	githubApi, 
+	useGetUserQuery, 
+	useGetUserRepositoriesQuery, 
+} from '../services/github';
+import { 
+	User, 
+	Repository,
+} from './types';
 export { 
 	githubApi,
-	useGetUserQuery
+	useGetUserQuery,
+	useGetUserRepositoriesQuery,
 };
 export type { 
 	User, 
-	Repository, 
-	Language 
+	Repository,
 };
