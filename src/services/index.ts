@@ -1,7 +1,8 @@
 import { 
 	githubApi, 
 	useGetUserQuery, 
-	useGetUserRepositoriesQuery, 
+	useGetUserRepositoriesQuery,
+	useGetUserRepositoriesLanguageQuery,
 } from '../services/github';
 import { 
 	User, 
@@ -11,6 +12,7 @@ export {
 	githubApi,
 	useGetUserQuery,
 	useGetUserRepositoriesQuery,
+	useGetUserRepositoriesLanguageQuery,
 };
 export type { 
 	User, 

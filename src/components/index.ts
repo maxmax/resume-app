@@ -13,6 +13,8 @@ import Grid from './Grid';
 import TextField from './TextField';
 import Button from './Button';
 import CircularProgress from './CircularProgress';
+import LinearProgress from './LinearProgress';
+import Chip from './Chip';
 export {  
 	AppLayout,
 	PageLayout,
@@ -29,4 +31,6 @@ export {
 	TextField,
 	Button,
 	CircularProgress,
+	LinearProgress,
+	Chip,
 }

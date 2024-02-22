@@ -9,6 +9,7 @@ import {
 } from '@/components';
 import UserInfo from './components/UserInfo';
 import RepositoriesList from './components/RepositoriesList';
+import LanguageUsage from './components/LanguageUsage';
 
 const Resume: React.FC = () => {
 
@@ -30,6 +31,7 @@ const Resume: React.FC = () => {
       ) : (
         <>
           <UserInfo user={user} />
+					{username && <LanguageUsage username={username} />}
 					{reposError ? <ErrorNotification error={reposError} /> : <RepositoriesList repositories={repos} />}
         </>
       )}

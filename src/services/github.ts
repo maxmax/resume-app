@@ -13,10 +13,14 @@ export const githubApi = createApi({
 		getUserRepositories: builder.query<Repository[], string>({
 			query: (username) => `users/${username}/repos?per_page=10&sort=updated`,
 		}),
+		getUserRepositoriesLanguage: builder.query<Repository[], string>({
+			query: (username) => `users/${username}/repos`,
+		}),
 	}),
 });
 
 export const { 
 	useGetUserQuery, 
 	useGetUserRepositoriesQuery,
+	useGetUserRepositoriesLanguageQuery,
 } = githubApi;
