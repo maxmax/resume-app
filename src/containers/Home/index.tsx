@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { 
+import {
 	Typography, 
 	TextField, 
 	Button, 
@@ -18,9 +18,9 @@ const Home: React.FC = () => {
 	};
 
 	return (
-		<Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '80vh' }}>
-			<Box sx={{ textAlign: 'center' }}>
-				<Typography variant="h1" sx={{ mb: 4 }}>MY GITHUB RÉSUMÉ</Typography>
+		<Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
+			<Box sx={{ textAlign: 'center', width: '100%' }}>
+				<Typography variant="h1" sx={{ mb: 8 }}>MY GITHUB RESUME</Typography>
 				<form onSubmit={handleSubmit}>
 					<Grid container spacing={2}>
 						<Grid item xs={8}>
@@ -39,6 +39,10 @@ const Home: React.FC = () => {
 							</Button>
 						</Grid>
 					</Grid>
+					<Typography variant="body1" sx={{ my: 8}}>
+						As a software startup owner I really enjoy when people send us their resumes and 
+						they include their github account so we can see tangible work they have done.
+					</Typography>
 				</form>
 			</Box>
 		</Box>

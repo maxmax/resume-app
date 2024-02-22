@@ -18,7 +18,7 @@ const UserInfo: React.FC<UserInfoProps> = ({ user }) => {
 	const lastUpdated = dayjs(user.updated_at).format('DD-MMM-YYYY');
 	
 	return (
-		<Box sx={{ textAlign: 'center' }}>
+		<Box sx={{ textAlign: 'center', mt: 8 }}>
 			<Typography variant="h1">{user.name}</Typography>
       <Avatar
         alt="Remy Sharp"
