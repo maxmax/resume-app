@@ -1,6 +1,6 @@
 # React + TypeScript + Vite + RTK Query + MUI
 
-[Demo](https://resume-ajc775uvc-maxbakaiev.vercel.app/)
+[Demo](https://maxmax.github.io/resume-app)
 
 ```js
   npm run dev

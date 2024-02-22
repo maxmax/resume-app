@@ -12,7 +12,7 @@ function App() {
 
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter basename="/resume-app">
         <AppLayout>
           <Routes>
             <Route path="/" element={<Home />} />
