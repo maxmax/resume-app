@@ -6,6 +6,8 @@ import {
 	Chip,
 	Typography,
 	Divider, 
+  PieContainer,
+  Grid,
 } from '@/components';
 
 interface LanguageUsageProps {
@@ -29,14 +31,28 @@ const LanguageUsage: React.FC<LanguageUsageProps> = ({ username }) => {
 		return acc;
 	}, {});
 
+  const languageCountsPercent = Object.entries(languageCounts).map(([lang, count]) => ({
+    label: lang,
+    value: Number(((count / data.length) * 100).toFixed(2)),
+  }));
+
+  console.log('languageCounts', languageCountsPercent);
+
   return (
     <Box sx={{ my: 4, textAlign: 'center' }}>
-			<Typography variant="h4">Languages Usage for {username}</Typography>
-      <Box sx={{ my: 4 }}>
-        {Object.entries(languageCounts).map(([lang, count]) => (
-					<Chip key={lang} label={`${lang}: ${((count / data.length) * 100).toFixed(2)}%`} sx={{ mx: 0.5, mb: 1 }} />
-        ))}
-      </Box>
+			<Typography variant="h4" sx={{ py: 4 }}>Languages Usage for {username}</Typography>
+      <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <PieContainer seriesData={languageCountsPercent} />
+        </Grid>
+        <Grid item xs={12}>
+          <Box sx={{ my: 4 }}>
+            {languageCountsPercent.map(({ label, value }) => (
+              <Chip key={label} label={`${label}: ${value}%`} sx={{ mx: 0.5, mb: 1 }} />
+            ))}
+          </Box>
+        </Grid>
+      </Grid>
 			<Divider />
     </Box>
   );

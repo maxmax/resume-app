@@ -19,7 +19,7 @@ const UserInfo: React.FC<UserInfoProps> = ({ user }) => {
 	
 	return (
 		<Box sx={{ textAlign: 'center', mt: 8 }}>
-			<Typography variant="h1">{user.name}</Typography>
+			<Typography variant="h1" sx={{ py: 4 }}>{user.name}</Typography>
       <Avatar
         alt="Remy Sharp"
         src={user.avatar_url}

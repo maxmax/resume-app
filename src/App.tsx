@@ -7,12 +7,13 @@ import Resume from '@/containers/Resume';
 import './App.css';
 
 const store = setupStore();
+const BASE_URL = import.meta.env.VITE_BASE_URL; // gh pages routes fix
 
 function App() {
 
   return (
     <Provider store={store}>
-      <BrowserRouter basename="/resume-app">
+      <BrowserRouter basename={BASE_URL}>
         <AppLayout>
           <Routes>
             <Route path="/" element={<Home />} />

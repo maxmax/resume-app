@@ -9,7 +9,7 @@ export default defineConfig({
     react(),
     ghPages(),
   ],
-  base: '/resume-app/',
+  // base: '/resume-app/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src')

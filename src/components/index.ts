@@ -15,6 +15,7 @@ import Button from './Button';
 import CircularProgress from './CircularProgress';
 import LinearProgress from './LinearProgress';
 import Chip from './Chip';
+import PieContainer from './PieContainer';
 export {  
 	AppLayout,
 	PageLayout,
@@ -33,4 +34,5 @@ export {
 	CircularProgress,
 	LinearProgress,
 	Chip,
+	PieContainer,
 }

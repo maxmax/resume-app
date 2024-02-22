@@ -32,7 +32,7 @@ const theme = createTheme({
       'Arial',
       'sans-serif',
     ].join(','),
-    fontSize: 16,
+    fontSize: 14,
     h1: {
       fontSize: '2.5rem',
     },
