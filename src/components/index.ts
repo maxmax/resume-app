@@ -1,4 +1,8 @@
 import AppLayout from './AppLayout';
+import PageLayout from './PageLayout';
+import CenteredLayout from './CenteredLayout';
+import Paper from './Paper';
+import ErrorNotification from './ErrorNotification';
 import Footer from './Footer';
 import Container from './Container';
 import Typography from './Typography';
@@ -11,6 +15,10 @@ import Button from './Button';
 import CircularProgress from './CircularProgress';
 export {  
 	AppLayout,
+	PageLayout,
+	CenteredLayout,
+	Paper,
+	ErrorNotification,
 	Footer,
 	Container,
 	Typography,

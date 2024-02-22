@@ -23,7 +23,7 @@ const RepositoriesList: React.FC<RepositoriesListProps> = ({ repositories }) => 
 					<Typography variant="h4">Popular Repositories</Typography>
 				</Grid>
 				<Grid item xs={12}>
-					{repositories.map((repo) => (
+					{repositories.length ? repositories.map((repo) => (
 						<Box key={repo.name}>
 							<Typography variant="overline" display="block">
 								<a href={repo.html_url} target="_blank" rel="noopener noreferrer">{repo.name}</a> 
@@ -38,7 +38,7 @@ const RepositoriesList: React.FC<RepositoriesListProps> = ({ repositories }) => 
 							}
 							<Divider />
 						</Box>
-					))}
+					)) : 'Empty 🤔'}
 				</Grid>
 			</Grid>
 		</Box>
