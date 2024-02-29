@@ -4,8 +4,8 @@
 
 #### Or Netlify by pages with demo user maxmax
 
-[Home Demo](https://verdant-jelly-e3d54a.netlify.app)
-[Resume Demo](https://verdant-jelly-e3d54a.netlify.app//resume/maxmax)
+[Home Demo](https://verdant-jelly-e3d54a.netlify.app) | 
+[Resume Demo](https://verdant-jelly-e3d54a.netlify.app//resume/maxmax) | 
 [Resume Repo Demo](https://verdant-jelly-e3d54a.netlify.app/resume/maxmax/resume-app)
 
 #### Started
