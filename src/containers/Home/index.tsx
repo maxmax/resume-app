@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-	Typography, 
-	TextField, 
-	Button, 
-	Box, 
-	Grid 
+	Typography,
+	TextField,
+	Button,
+	Box,
+	Grid
 } from '@/components';
 
 const Home: React.FC = () => {
@@ -35,12 +35,12 @@ const Home: React.FC = () => {
 						</Grid>
 						<Grid item xs={4}>
 							<Button type="submit" variant="contained" color="primary" fullWidth>
-								Submit
+								Generate
 							</Button>
 						</Grid>
 					</Grid>
 					<Typography variant="body1" sx={{ my: 8}}>
-						As a software startup owner I really enjoy when people send us their resumes and 
+						As a software startup owner I really enjoy when people send us their resumes and
 						they include their github account so we can see tangible work they have done.
 					</Typography>
 				</form>
