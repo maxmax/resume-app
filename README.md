@@ -4,9 +4,9 @@
 
 #### Or Netlify by pages with demo user maxmax
 
-[Home Demo](https://65e09c64c7a7a600087f2b69--verdant-jelly-e3d54a.netlify.app)
-[Resume Demo](https://65e09c64c7a7a600087f2b69--verdant-jelly-e3d54a.netlify.app/resume/maxmax)
-[Resume Repo Demo](https://65e09c64c7a7a600087f2b69--verdant-jelly-e3d54a.netlify.app/resume/maxmax/resume-app)
+[Home Demo](https://verdant-jelly-e3d54a.netlify.app)
+[Resume Demo](https://verdant-jelly-e3d54a.netlify.app//resume/maxmax)
+[Resume Repo Demo](https://verdant-jelly-e3d54a.netlify.app/resume/maxmax/resume-app)
 
 #### Started
 
