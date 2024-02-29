@@ -1,8 +1,10 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { githubApi } from '@/services';
+import userReducer from './slices/userSlice'; // Import the reducer for the user
 
 const rootReducer = combineReducers({
   [githubApi.reducerPath]: githubApi.reducer,
+  user: userReducer, // Add a reducer for the user to the root reducer
 });
 
 interface PreloadedState {}

@@ -5,8 +5,8 @@ import {
 	LinearProgress,
 	Chip,
 	Typography,
-	Divider, 
-  PieContainer,
+	Divider,
+	PieChart,
   Grid,
 } from '@/components';
 
@@ -15,14 +15,15 @@ interface LanguageUsageProps {
 }
 
 const LanguageUsage: React.FC<LanguageUsageProps> = ({ username }) => {
+  
   const { data, error, isLoading } = useGetUserRepositoriesLanguageQuery(username);
 
   if (isLoading) {
     return <Box sx={{ width: '100%' }}><LinearProgress /></Box>;
   }
 
-  if (!data || error) {
-    return <div>No data available</div>;
+  if (!data || !data.length || error) {
+    return null;
   }
 
 	const languageCounts: { [lang: string]: number } = data.reduce<{ [lang: string]: number }>((acc, repo) => {
@@ -36,14 +37,12 @@ const LanguageUsage: React.FC<LanguageUsageProps> = ({ username }) => {
     value: Number(((count / data.length) * 100).toFixed(2)),
   }));
 
-  console.log('languageCounts', languageCountsPercent);
-
   return (
     <Box sx={{ my: 4, textAlign: 'center' }}>
 			<Typography variant="h4" sx={{ py: 4 }}>Languages Usage for {username}</Typography>
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <PieContainer seriesData={languageCountsPercent} />
+          <PieChart data={languageCountsPercent} />
         </Grid>
         <Grid item xs={12}>
           <Box sx={{ my: 4 }}>

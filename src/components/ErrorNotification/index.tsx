@@ -3,7 +3,7 @@ import { Alert } from '@mui/material';
 
 interface Error {
   message?: string;
-  status?: number;
+  status?: string | number;
 }
 
 interface ErrorNotificationProps {
