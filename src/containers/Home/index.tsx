@@ -14,7 +14,7 @@ const Home: React.FC = () => {
 
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		navigate(`/${username}`);
+		navigate(`/resume/${username}`);
 	};
 
 	return (

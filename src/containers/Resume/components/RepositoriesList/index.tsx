@@ -1,46 +1,113 @@
 import React from 'react';
 import dayjs from 'dayjs';
+import { Link } from "react-router-dom";
 import { Repository } from '@/services';
 import { 
 	Box, 
 	Grid,
 	Typography,
-	Divider, 
+	Button,
+	Divider,
+	Select,
+	SelectChangeEvent,
+	MenuItem,
+	Table,
+	TableBody,
+	TableCell,
+	TableContainer,
+	TableHead,
+	TableRow,
+	TablePagination,
 } from '@/components';
 
 interface RepositoriesListProps {
   repositories?: Repository[];
+	currentPage: number;
+	perPage: number;
+	count: number;
+	selectedSort: string;
+  onPageChange: (newPage: number) => void;
+  onPerPageChange: (newPerPage: number) => void;
+  onSortChange: (event: SelectChangeEvent<unknown>) => void;
 }
 
-const RepositoriesList: React.FC<RepositoriesListProps> = ({ repositories }) => {
-	
+const RepositoriesList: React.FC<RepositoriesListProps> = ({ 
+	repositories, 
+	currentPage, 
+	perPage,
+	count,
+	onPageChange, 
+	onPerPageChange,
+  selectedSort,
+  onSortChange,
+}) => {
+
 	if (!repositories) return null;
 
 	return (
 		<Box sx={{ my: 4, textAlign: 'center' }}>
-			<Grid container spacing={0} justifyContent="center">
-				<Grid item xs={12}>
-					<Typography variant="h4" sx={{ py: 4 }}>Popular Repositories</Typography>
-				</Grid>				
-				{repositories.length ? repositories.map((repo) => (
-					<Grid item sm={12} md={6} lg={4} xl={4}>
-						<Box key={repo.name} sx={{ pt: 2 }}>
-							<Typography variant="button" display="block">
-								<a href={repo.html_url} target="_blank" rel="noopener noreferrer">{repo.name}</a> 
-							</Typography>
-							<Typography variant="overline" display="block">
-								(Last Updated: {dayjs(repo.updated_at).format('DD-MMM-YYYY h:mm A')})
-							</Typography>
-							{repo.language &&
-								<Typography variant="caption" display="block" gutterBottom>
-									(Language: {repo.language})
-								</Typography>
-							}
-							<Divider />
-						</Box>
-					</Grid>
-				)) : <Grid item xs={12}>Empty 🤔</Grid>}
+			<Grid container spacing={0} justifyContent="space-between">
+				<Grid item sx={{ mt: 4, ml: 4 }}>
+					<Typography variant="h4">Repositories:</Typography>
+				</Grid>
+				<Grid item sx={{ mt: 4, mr: 4 }}>
+					<Select
+						value={selectedSort}
+						onChange={onSortChange}
+						displayEmpty
+						inputProps={{ 'aria-label': 'Sort By' }}
+						size="small"
+					>
+						<MenuItem value="updated">Updated</MenuItem>
+						<MenuItem value="created">Created</MenuItem>
+						<MenuItem value="pushed">Pushed</MenuItem>
+					</Select>
+				</Grid>
+				{repositories.length ? 
+					<>
+						<TableContainer>
+							<Table sx={{ minWidth: 650 }} aria-label="simple table">
+								<TableHead>
+									<TableRow>
+										<TableCell><b>Name</b></TableCell>
+										<TableCell align="right"><b>Updated</b></TableCell>
+										<TableCell align="right"><b>Language</b></TableCell>
+										<TableCell align="right"></TableCell>
+									</TableRow>
+								</TableHead>
+								<TableBody>
+									{repositories.map(({ name, updated_at, language, full_name }) => (
+										<TableRow
+											key={name}
+										>
+											<TableCell component="th" scope="row">
+												{name}
+											</TableCell>
+											<TableCell align="right" sx={{ width: '120px'}}>{dayjs(updated_at).format('DD-MMM-YYYY')}</TableCell>
+											<TableCell align="right" sx={{ width: '160px'}}>{language || 'Unknown'}</TableCell>
+											<TableCell align="right" sx={{ width: '170px'}}>
+												<Link to={`/resume/${full_name}`}>
+													<Button variant="outlined" size="small">Show more</Button>
+												</Link>
+											</TableCell>
+										</TableRow>
+									))}
+								</TableBody>
+							</Table>
+						</TableContainer>
+						<TablePagination
+							rowsPerPageOptions={[5, 10, 25]}
+							component="div"
+							count={count}
+							rowsPerPage={perPage}
+							page={currentPage - 1}
+							onPageChange={(_event, newPage) => onPageChange(newPage + 1)}
+							onRowsPerPageChange={(event) => onPerPageChange(parseInt(event.target.value, 10))}
+						/>
+					</>
+				: <Grid item xs={12} sx={{ mb: 8 }}>Doesn’t have any public repositories yet 🤔</Grid> }
 			</Grid>
+			<Divider />
 		</Box>
 	);
 };
