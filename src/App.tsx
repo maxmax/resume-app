@@ -9,13 +9,12 @@ import NotFoundPage from '@/containers/NotFoundPage';
 import './App.css';
 
 const store = setupStore();
-const BASE_URL = import.meta.env.VITE_BASE_URL; // gh pages routes fix
 
 function App() {
 
   return (
     <Provider store={store}>
-      <BrowserRouter basename={BASE_URL}>
+      <BrowserRouter>
         <AppLayout>
           <Routes>
             <Route path="/" element={<Home />} />

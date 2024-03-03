@@ -32,7 +32,7 @@ interface RepositoriesListProps {
 }
 
 const RepositoriesList: React.FC<RepositoriesListProps> = ({ 
-	repositories, 
+	repositories = [], 
 	currentPage, 
 	perPage,
 	count,
@@ -42,7 +42,13 @@ const RepositoriesList: React.FC<RepositoriesListProps> = ({
   onSortChange,
 }) => {
 
-	if (!repositories) return null;
+  if (!repositories || repositories.length === 0) {
+    return (
+      <Box sx={{ my: 4, textAlign: 'center' }}>
+        <Typography variant="body1">Doesn't have any public repositories yet 🤔</Typography>
+      </Box>
+    );
+  }
 
 	return (
 		<Box sx={{ my: 4, textAlign: 'center' }}>
@@ -63,49 +69,47 @@ const RepositoriesList: React.FC<RepositoriesListProps> = ({
 						<MenuItem value="pushed">Pushed</MenuItem>
 					</Select>
 				</Grid>
-				{repositories.length ? 
-					<>
-						<TableContainer>
-							<Table sx={{ minWidth: 650 }} aria-label="simple table">
-								<TableHead>
-									<TableRow>
-										<TableCell><b>Name</b></TableCell>
-										<TableCell align="right"><b>Updated</b></TableCell>
-										<TableCell align="right"><b>Language</b></TableCell>
-										<TableCell align="right"></TableCell>
+				<>
+					<TableContainer>
+						<Table sx={{ minWidth: 650 }} aria-label="simple table">
+							<TableHead>
+								<TableRow>
+									<TableCell><b>Name</b></TableCell>
+									<TableCell align="right"><b>Updated</b></TableCell>
+									<TableCell align="right"><b>Language</b></TableCell>
+									<TableCell align="right"></TableCell>
+								</TableRow>
+							</TableHead>
+							<TableBody>
+								{repositories.map(({ name, updated_at, language, full_name }) => (
+									<TableRow
+										key={name}
+									>
+										<TableCell component="th" scope="row">
+											{name}
+										</TableCell>
+										<TableCell align="right" sx={{ width: '120px'}}>{dayjs(updated_at).format('DD-MMM-YYYY')}</TableCell>
+										<TableCell align="right" sx={{ width: '160px'}}>{language || 'Unknown'}</TableCell>
+										<TableCell align="right" sx={{ width: '170px'}}>
+											<Link to={`/resume/${full_name}`}>
+												<Button variant="outlined" size="small">Show more</Button>
+											</Link>
+										</TableCell>
 									</TableRow>
-								</TableHead>
-								<TableBody>
-									{repositories.map(({ name, updated_at, language, full_name }) => (
-										<TableRow
-											key={name}
-										>
-											<TableCell component="th" scope="row">
-												{name}
-											</TableCell>
-											<TableCell align="right" sx={{ width: '120px'}}>{dayjs(updated_at).format('DD-MMM-YYYY')}</TableCell>
-											<TableCell align="right" sx={{ width: '160px'}}>{language || 'Unknown'}</TableCell>
-											<TableCell align="right" sx={{ width: '170px'}}>
-												<Link to={`/resume/${full_name}`}>
-													<Button variant="outlined" size="small">Show more</Button>
-												</Link>
-											</TableCell>
-										</TableRow>
-									))}
-								</TableBody>
-							</Table>
-						</TableContainer>
-						<TablePagination
-							rowsPerPageOptions={[5, 10, 25]}
-							component="div"
-							count={count}
-							rowsPerPage={perPage}
-							page={currentPage - 1}
-							onPageChange={(_event, newPage) => onPageChange(newPage + 1)}
-							onRowsPerPageChange={(event) => onPerPageChange(parseInt(event.target.value, 10))}
-						/>
-					</>
-				: <Grid item xs={12} sx={{ mb: 8 }}>Doesn’t have any public repositories yet 🤔</Grid> }
+								))}
+							</TableBody>
+						</Table>
+					</TableContainer>
+					<TablePagination
+						rowsPerPageOptions={[5, 10, 25]}
+						component="div"
+						count={count}
+						rowsPerPage={perPage}
+						page={currentPage - 1}
+						onPageChange={(_event, newPage) => onPageChange(newPage + 1)}
+						onRowsPerPageChange={(event) => onPerPageChange(parseInt(event.target.value, 10))}
+					/>
+				</>
 			</Grid>
 			<Divider />
 		</Box>
