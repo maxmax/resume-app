@@ -1,8 +1,6 @@
 # React + TypeScript + Vite + RTK Query + MUI
 
-[Demo gh-pages](https://maxmax.github.io/resume-app)
-
-#### Or Netlify by pages with demo user maxmax
+#### Netlify by pages with demo user maxmax
 
 [Home without user Demo](https://verdant-jelly-e3d54a.netlify.app) | 
 [Resume with user Demo](https://verdant-jelly-e3d54a.netlify.app/resume/maxmax) | 
