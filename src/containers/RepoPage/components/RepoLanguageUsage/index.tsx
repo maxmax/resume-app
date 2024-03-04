@@ -52,6 +52,7 @@ const RepoLanguageUsage: React.FC<LanguageUsageProps> = ({ repository }) => {
         onChange={handleChange} 
         size="small"
         sx={{ my: 4 }}
+        variant="standard"
       >
         <MenuItem value="line">Line Chart</MenuItem>
         <MenuItem value="pie">Pie Chart</MenuItem>
