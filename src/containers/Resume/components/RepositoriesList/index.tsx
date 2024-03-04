@@ -63,6 +63,7 @@ const RepositoriesList: React.FC<RepositoriesListProps> = ({
 						displayEmpty
 						inputProps={{ 'aria-label': 'Sort By' }}
 						size="small"
+						variant="standard"
 					>
 						<MenuItem value="updated">Updated</MenuItem>
 						<MenuItem value="created">Created</MenuItem>

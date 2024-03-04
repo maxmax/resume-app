@@ -2,7 +2,6 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import RepositoriesList from '..';
 
-// Ваші тестові дані
 const mockRepositories = [
   {
     id: 1,

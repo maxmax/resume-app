@@ -9,7 +9,9 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "deploy": "vite build && vite build --base=./ && GH_TOKEN=${GH_TOKEN} vite-plugin-gh-pages",
-    "test": "jest"
+    "test": "jest",
+    "cypress-open": "npx cypress open",
+    "cypress": "npx cypress run"
   },
   "dependencies": {
     "@emotion/react": "^11.11.3",

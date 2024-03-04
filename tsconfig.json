@@ -25,7 +25,11 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "cypress/**/*.ts"],
+  "exclude": [
+    "cypress/**/*.ts",
+    "cypress.config.ts"
+  ],
+  "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }],
-  "types": ["@testing-library/jest-dom", "cypress"]
+  "types": ["@testing-library/jest-dom"]
 }
